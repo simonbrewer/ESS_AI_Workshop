@@ -1,5 +1,5 @@
 ---
-title: "MAGIC AI Workshop 01 Introduction to machine learning"
+title: "Geography AI Workshop 01 Introduction to machine learning"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
