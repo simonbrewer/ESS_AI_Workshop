@@ -1,0 +1,56 @@
+---
+title: 'Geography AI Workshop (April 12 2024)'
+knit: (function(input_file, encoding) {
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+ encoding=encoding,
+ output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+author:
+  - Simon Brewer^[University of Utah, simon.brewer@geog.utah.edu]
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: flatly
+    df_print: paged
+    number_sections: false
+    toc: false
+    toc_float: false
+---
+
+# Agenda
+
+- General introduction (Simon)
+- Introduction to machine learning (Adit)
+    - Intro ML exercise: [R notebook][introML_R]|[Python notebook][introML_P]|[Colab notebook][introML_C]
+    - Open project discussion (all participants)
+- Introduction to convolutional neural networks (TBD)
+  - Image segmentation (Simon)
+  - CNN exercise 1: [R notebook][CNN_R]|[Python notebook][CNN_P]|[Colab notebook][CNN_C]
+- Introduction to Natural Language Processing methods (Simon)
+  - NLP exercise: [R notebook][NLP_R]|[Python notebook][NLP_P]|[Colab notebook][NLP_C]
+
+# Data
+
+All files for the hands-on exercises can be found [here][gdrive]
+
+# Colab notebooks
+
+https://drive.google.com/file/d/1l7t6iAIHggNFSJ-zoxJZYMYSGDzUBWPT/view?usp=sharing
+
+https://drive.google.com/file/d/1c7Ui7mzJWmAf2KoSaE1wJm6qlgaEgkDh/view?usp=sharing
+
+https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
+
+
+[introML_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_01_IntroML.html
+[introML_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_01_IntroML.ipynb
+[introML_C]: https://drive.google.com/file/d/1l7t6iAIHggNFSJ-zoxJZYMYSGDzUBWPT/view?usp=sharing
+[CNN_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_02_CNNS.html
+[CNN_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_02_CNNs.ipynb
+[CNN_C]: https://drive.google.com/file/d/1c7Ui7mzJWmAf2KoSaE1wJm6qlgaEgkDh/view?usp=sharing
+[NLP_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_03_NLP.html
+[NLP_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_03_NLP.ipynb
+[NLP_C]: https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
+[gilbert]: https://geology.utah.gov/map-pub/survey-notes/geosights/g-k-gilbert-geologic-view-park/
+[gdrive]: https://drive.google.com/drive/folders/1lp79wJvtis-SDQ2pbZ4Ecgb4CEEawV-Q?usp=drive_link
+[wshop]: https://drive.google.com/drive/folders/1GMEY1fYEj1YMI__u3hU4y6agnrz3ekna?usp=sharing
