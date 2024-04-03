@@ -1,5 +1,5 @@
 ---
-title: "MAGIC AI Workshop 02 Convolutional neural networks"
+title: "Geography AI Workshop 02 Convolutional neural networks"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
