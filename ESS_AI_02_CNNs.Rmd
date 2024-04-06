@@ -38,9 +38,13 @@ In this exercise, we'll build a convolutional neural network (CNN) for image cla
 But all methods are based around two basic operations: 
 
 - Convolution: in this step, the network learns a series of kernels or filters that transform the original image in some way. These are similar to filters that are used in standard image processing (e.g. low-pass filters), but filters are chosen by how well the transformed image maps to the outcome variable. To put this another way, these filters identify shapes or features that are important in differentiating between different outcomes
-- Max-pooling: in this step, the image resolution is transformed. In general, the resolution is halved, by aggregating groups of four pixels in a two by two window. 
+- Max-pooling: in this step, the image resolution is transformed. In general, the resolution is halved, by aggregating groups of four pixels in a two by two window. Pooling acts to aggregate smaller scale features into larger objects
 
 In general, these steps are repeated several times. As this progresses, the small shapes identified in the first set of convolutions are progressively combined into larger structures. For example, a series of small curves or lines could be aggregated into a cat's eye.
+
+The code in this example is modified from a blog by BEEILAB: 
+https://medium.com/@beeilab.yt/land-use-land-cover-classification-using-satellite-images-and-deep-learning-a-step-by-step-guide-27fea9dbf748
+
 
 ### Image classification
 
@@ -48,22 +52,23 @@ The basic idea behind image classification is to link *features* of an image to 
 
 ### Data
 
-We'll use a dataset from Kaggle (https://www.kaggle.com/moltean/fruits) containing over 90,000 images of fruits and vegetables. We'll just be using a subset of these data, and you'll need to download the zip file *fruits.zip* from gtihub. I'd suggest making a new folder for this lab - move the zip file to this once it is downloaded. 
+For this exercise, we'll use the EuroSat benchmarking dataset from: https://zenodo.org/records/7711810:
 
-Once you have unzipped the data, take a look in the *fruits* folder. This is already set up in the standard way for image classification. There are two high level folders `Training` and `Testing`, each of which contains a subset of the images. Not too surprisingly, the first will be used to train the model, and the second to test the model. Within each of these, there will be a set of folders, one per class of fruit. The name of the folders is used as the *label* for each image, and is what Tensorflow will use. 
+> EuroSAT is a land use and land cover classification dataset. The dataset is based on Sentinel-2 satellite imagery covering 13 spectral bands and consists of 10 LULC classes with a total of 27,000 labeled and geo-referenced images. 
 
-- fruits
-- Training
-- Apple
-- Banana
-- ...
-- Testing
-- Apple
-- Banana
-- ...
+The images are available as both multispectral and RGB. We'll just use the RGB images here to limit the amount of data we need to deal with, but this code can be easily extended to use the multispectral data. In the paper that accompanies this dataset, the authors were able to get a 98.5% accuracy in prediction. We won't get that high here, as we'll take a few short cuts to make the code run faster, but this should give you an idea of what is possible with these networks. 
 
-Note that this is a specific format for image classification. There are other options, for example, if you are working with continuous outcomes.
+The images are available on the workshop Google drive in the zip file *EuroSat_RGB.zip*. Download this now, and move it to a folder that is easy to find on your computer, and unzip it. 
 
+Once you have unzipped the data, take a look in the *EuroSat_RGB* folder. This is already set up in the standard way for image classification, where all images for a given class are kept in a single folder for that class. The name of the folders can then used as the *label* for each image, and is what we will use. 
+
+- EuroSat_RGB
+  - AnnualCrop
+  - Forest
+  - HerbaceousVegetation
+  - ...
+
+Note that this is a specific layout for image classification. There are other options, for example, if you are working with continuous outcomes.
 
 ## Tensorflow and Keras
 
@@ -75,7 +80,7 @@ First install the R `keras` package:
 install.packages('keras')
 ```
 
-Once this step is complete, load th elibrary, and run the `install_keras()` function. This will install a local version of Python, as well as download all the necessary add-ons to build deep learning models:
+Once this step is complete, load the library, and run the `install_keras()` function. This will install a local version of Python, as well as download all the necessary add-ons to build deep learning models:
 
 ```{r eval = FALSE}
 library(keras)
@@ -98,7 +103,7 @@ library(ggplot2)
 Now set the path to the folder containing the training images you downloaded. If you've copied these to your datafiles folder, this will look something like this:
 
 ```{r eval=TRUE}
-train_image_files_path = "./datafiles/fruits/Training/"
+image_path = "./datafiles/EuroSAT_RGB/"
 ```
 
 If you have any questions about setting this path, please ask. 
@@ -107,7 +112,7 @@ You can visualize any of the images using the **imager** package (you'll need to
 
 ```{r message = FALSE}
 library(imager)
-im = load.image(paste0(train_image_files_path, "Banana/0_100.jpg"))
+im = load.image(paste0(image_path, "Forest/Forest_10.jpg"))
 plot(im)
 ```
 
@@ -116,16 +121,17 @@ You can try other images by changing the folder name and filename. Note that the
 Next, we'll define the classes that we are going to process. There are 16 different types of fruit in the dataset, making this a multi-class classification problem. 
 
 ```{r}
-fruit_list = c("Kiwi", "Banana", "Apricot", "Avocado", 
-                "Cocos", "Clementine", "Mandarine", "Orange",
-                "Limes", "Lemon", "Peach", "Plum", 
-                "Raspberry", "Strawberry", "Pineapple", "Pomegranate")
+class_list = c("AnnualCrop", "Forest", "HerbaceousVegetation",
+                "Highway", "Industrial", "Pasture", "PermanentCrop",
+                "Residential", "River", "SeaLake")
 
 # store the number of classes
-output_n = length(fruit_list)
+output_n = length(class_list)
 ```
 
-The original images are 100x100 pixels. Ideally we'd use these at their full resolution, but as this is an example, we'll reduce the resolution to 20x20 to make this a bit faster to run, so we set the target size here. We'll use these values (stored in `target_size` to define the input tensor shape in the network. (A good follow-up test would be to increase this and see how much it impacts the predictions.) 
+The original images are 64x64 pixels. As these are small, we can use them at their full resolution. For larger images, we'd either need to reduce their resolution or divide them into smaller images. 
+
+We'll set a few constants here: the image size (`patch_size`) and the number of images we want to use from each class (`patch_number`). The full set has 3000 images per class, but here will limit this to the first 1000 to speed up model training. A good follow-up exercise would be to increase this to see what impact it has on the model's predictive skill. We also define the number of channels - these will define the input tensors. These will be rank 3 tensors, with dimensions 64x64x3. The channels can easily be changed here to include additional bands as necessary (Sentinel-2 multispectral data has 13 bands, for example).
 
 ```{r}
 img_width = 20
@@ -174,7 +180,7 @@ train_image_array_gen = flow_images_from_directory(train_image_files_path,
                                                     subset = 'training',
                                                     target_size = target_size,
                                                     class_mode = "categorical",
-                                                    classes = fruit_list,
+                                                    classes = class_list,
                                                     batch_size = batch_size,
                                                     seed = 42)
 ```
@@ -187,7 +193,7 @@ valid_image_array_gen = flow_images_from_directory(train_image_files_path,
                                                    subset = 'validation',
                                                    target_size = target_size,
                                                    class_mode = "categorical",
-                                                   classes = fruit_list,
+                                                   classes = class_list,
                                                    batch_size = batch_size,
                                                    seed = 42)
 ```
@@ -459,7 +465,7 @@ test_generator <- flow_images_from_directory(
   test_data_gen,
   target_size = target_size,
   class_mode = "categorical",
-  classes = fruit_list,
+  classes = class_list,
   batch_size = 1,
   shuffle = FALSE,
   seed = 42)
@@ -514,7 +520,7 @@ pred_table <- table(obs_class, pred_class)
 Note that the row and column indices are different (this is because R starts indices at 1 and Keras starts at 0). We can simply replace these with the fruit labels
 
 ```{r results='hide'}
-rownames(pred_table) <- colnames(pred_table) <- fruit_list
+rownames(pred_table) <- colnames(pred_table) <- class_list
 pred_table
 ```
 
