@@ -43,13 +43,13 @@ https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=shari
 
 
 [introML_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_01_IntroML.html
-[introML_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_01_IntroML.ipynb
+[introML_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_01_IntroML.ipynb
 [introML_C]: https://drive.google.com/file/d/1l7t6iAIHggNFSJ-zoxJZYMYSGDzUBWPT/view?usp=sharing
 [CNN_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_02_CNNS.html
-[CNN_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_02_CNNs.ipynb
+[CNN_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_02_CNNs.ipynb
 [CNN_C]: https://drive.google.com/file/d/1c7Ui7mzJWmAf2KoSaE1wJm6qlgaEgkDh/view?usp=sharing
 [NLP_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_03_NLP.html
-[NLP_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_03_NLP.ipynb
+[NLP_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_03_NLP.ipynb
 [NLP_C]: https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
 [gilbert]: https://geology.utah.gov/map-pub/survey-notes/geosights/g-k-gilbert-geologic-view-park/
 [gdrive]: https://drive.google.com/drive/folders/1lp79wJvtis-SDQ2pbZ4Ecgb4CEEawV-Q?usp=drive_link
