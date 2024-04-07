@@ -1,10 +1,10 @@
 ---
-title: "MAGIC AI Workshop 03 Natural Language Processing"
+title: "Geography AI Workshop 03 Natural Language Processing"
 knit: (function(input_file, encoding) {
   out_dir <- 'docs';
   rmarkdown::render(input_file,
  encoding=encoding,
- output_file=file.path(dirname(input_file), out_dir, 'MAGIC_03_NLP.html'))})
+ output_file=file.path(dirname(input_file), out_dir, 'ESS_03_NLP.html'))})
 author: "Simon Brewer"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
