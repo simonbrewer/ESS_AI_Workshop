@@ -19,14 +19,14 @@ output:
 
 # Agenda
 
-- General introduction (Simon)
-- Introduction to machine learning (Adit)
+- General introduction
+- Introduction to machine learning
     - Intro ML exercise: [R notebook][introML_R]|[Python notebook][introML_P]|[Colab notebook][introML_C]
     - Open project discussion (all participants)
-- Introduction to convolutional neural networks (TBD)
-  - Image segmentation (Simon)
+- Introduction to convolutional neural networks 
+  - Image segmentation
   - CNN exercise 1: [R notebook][CNN_R]|[Python notebook][CNN_P]|[Colab notebook][CNN_C]
-- Introduction to Natural Language Processing methods (Simon)
+- Introduction to Natural Language Processing methods
   - NLP exercise: [R notebook][NLP_R]|[Python notebook][NLP_P]|[Colab notebook][NLP_C]
 
 # Data
@@ -51,6 +51,4 @@ https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=shari
 [NLP_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_03_NLP.html
 [NLP_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_03_NLP.ipynb
 [NLP_C]: https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
-[gilbert]: https://geology.utah.gov/map-pub/survey-notes/geosights/g-k-gilbert-geologic-view-park/
-[gdrive]: https://drive.google.com/drive/folders/1lp79wJvtis-SDQ2pbZ4Ecgb4CEEawV-Q?usp=drive_link
-[wshop]: https://drive.google.com/drive/folders/1GMEY1fYEj1YMI__u3hU4y6agnrz3ekna?usp=sharing
+[gdrive]: https://drive.google.com/drive/folders/1CR1uCy_INSXoE321obXDCmotbduDdfN3?usp=sharing
