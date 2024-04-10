@@ -35,9 +35,9 @@ All files for the hands-on exercises can be found [here][gdrive]
 
 # Colab notebooks
 
-https://drive.google.com/file/d/1l7t6iAIHggNFSJ-zoxJZYMYSGDzUBWPT/view?usp=sharing
+https://colab.research.google.com/drive/16HVhrakoob0SCALwB6GXYD1T3g5JI5U0?usp=drive_link
 
-https://drive.google.com/file/d/1c7Ui7mzJWmAf2KoSaE1wJm6qlgaEgkDh/view?usp=sharing
+https://colab.research.google.com/drive/1qKzsJvwCXZaltSj8fqu9AA5DduLagKeq?usp=drive_link
 
 https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
 
