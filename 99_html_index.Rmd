@@ -22,7 +22,6 @@ output:
 - General introduction
 - Introduction to machine learning
     - Intro ML exercise: [R notebook][introML_R]|[Python notebook][introML_P]|[Colab notebook][introML_C]
-    - Open project discussion (all participants)
 - Introduction to convolutional neural networks 
   - Image segmentation
   - CNN exercise 1: [R notebook][CNN_R]|[Python notebook][CNN_P]|[Colab notebook][CNN_C]
@@ -43,11 +42,11 @@ https://colab.research.google.com/drive/1IuiuqFgeq--u16H2pYd60f1REjvpDhQd?usp=sh
 
 [introML_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_01_IntroML.html
 [introML_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_01_IntroML.ipynb
-[introML_C]: https://drive.google.com/file/d/1l7t6iAIHggNFSJ-zoxJZYMYSGDzUBWPT/view?usp=sharing
+[introML_C]: https://colab.research.google.com/drive/16HVhrakoob0SCALwB6GXYD1T3g5JI5U0?usp=drive_link
 [CNN_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_02_CNNS.html
 [CNN_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_02_CNNs.ipynb
-[CNN_C]: https://drive.google.com/file/d/1c7Ui7mzJWmAf2KoSaE1wJm6qlgaEgkDh/view?usp=sharing
+[CNN_C]: https://colab.research.google.com/drive/1qKzsJvwCXZaltSj8fqu9AA5DduLagKeq?usp=drive_link
 [NLP_R]: https://simonbrewer.github.io/ESS_AI_Workshop/ESS_03_NLP.html
 [NLP_P]: https://github.com/simonbrewer/ESS_AI_Workshop/blob/main/ESS_AI_03_NLP.ipynb
-[NLP_C]: https://drive.google.com/file/d/1tgcHQvWaYYWk71O3qMJDeTJ3KzdlKUhe/view?usp=sharing
+[NLP_C]: https://colab.research.google.com/drive/1IuiuqFgeq--u16H2pYd60f1REjvpDhQd?usp=sharing
 [gdrive]: https://drive.google.com/drive/folders/1CR1uCy_INSXoE321obXDCmotbduDdfN3?usp=sharing
