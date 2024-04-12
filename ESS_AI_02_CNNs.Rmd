@@ -45,8 +45,29 @@ In general, these steps are repeated several times. As this progresses, the smal
 The code in this example is modified from a blog by BEEILAB: 
 https://medium.com/@beeilab.yt/land-use-land-cover-classification-using-satellite-images-and-deep-learning-a-step-by-step-guide-27fea9dbf748
 
+## Tensorflow and Keras in R
 
-### Image classification
+The TensorFlow and Keras libraries were first designed to be used in Python. There has been quite a lot of work recently to allow access in R, mainly using the `reticulate` package which allows exchanges between R and Python, but the installation can still be tricky. Please ask if you need help with any of these steps. (If this works, you will only need to do this once!)
+
+First, you need to install a version of Python. I'd recommend installing [Anaconda][anaconda] or [miniconda][miniconda], as these generally work well. You can also follow this guide: 
+https://medium.datadriveninvestor.com/how-to-setup-keras-and-tensorflow-in-rstudio-on-windows-d0175e9a8f10
+
+Next, open R/RStudio and install the R `keras` package:
+
+```{r eval = FALSE}
+install.packages('keras')
+```
+
+Once this step is complete, load the library, and run the `install_keras()` function. This will download all the necessary Python add-ons to build deep learning models:
+
+```{r eval = FALSE}
+library(keras)
+install_keras()
+```
+
+This can take a few minutes, but should all load without problem. If you do get error messages, please let us know so we can try to fix them. If this all works, move on to the next section.
+
+## Image classification
 
 The basic idea behind image classification is to link *features* of an image to a single label or class. For example, we might have a photograph of a cat, with the label `Cat` and one of a dog with the label `Dog`. The goal of the model is to identify what shapes and colors, and combination of these can help differentiate between these two classes. 
 
@@ -69,25 +90,6 @@ Once you have unzipped the data, take a look in the *EuroSat_RGB* folder. This i
 - ...
 
 Note that this is a specific layout for image classification. There are other options, for example, if you are working with continuous outcomes.
-
-## Tensorflow and Keras
-
-The TensorFlow and Keras libraries were first designed to be used in Python. There has been quite a lot of work recently to allow access in R, mainly using the `reticulate` package which allows exchanges between R and Python. You do still need an version of Python for this to work, but this can be installed directly from R. 
-
-First install the R `keras` package:
-
-```{r eval = FALSE}
-install.packages('keras')
-```
-
-Once this step is complete, load the library, and run the `install_keras()` function. This will install a local version of Python, as well as download all the necessary add-ons to build deep learning models:
-
-```{r eval = FALSE}
-library(keras)
-install_keras()
-```
-
-This can take a few minutes, but should all load without problem. If you do get error messages, please let us know so we can try to fix them 
 
 ### Data processing
 
@@ -502,3 +504,6 @@ The confusion matrix shows that the class-based accuracy varies substantially (c
 - Using a more complex CNN with a larger number of layers
 - Using a pre-trained model (one trained on a very large number of images that can be modified for this set
 
+
+[anaconda]: https://www.anaconda.com/download
+[miniconda]: https://conda.io/projects/conda/en/latest/user-guide/install/windows.html
